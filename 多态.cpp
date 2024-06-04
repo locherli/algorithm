@@ -1,45 +1,84 @@
 #include <iostream>
 using namespace std;
 
-//class definition
-class Animal
+//virtual function was writen in basic class 
+class abstractDrink
 {
 public:
-	virtual void speak()
+	virtual void boil() = 0;
+
+	virtual void brew() = 0;
+
+	virtual void pourInCup() = 0;
+
+	virtual void putInSomething() = 0;
+
+
+	void makeDrink()
 	{
-		cout << "animal make a sound." << endl;
+		boil();
+		brew();
+		pourInCup();
+		putInSomething();
 	}
 };
 
-class Cat:public Animal
+//spicific fuction was writen in subclass
+class makeCoffee:public abstractDrink
 {
-public:
-	void speak()
+	virtual void boil()
 	{
-		cout << "cat make a sound." << endl;
+		cout << "boil the water" << endl;
+	}
+
+	virtual void brew()
+	{
+		cout << "brew the coffee bean" << endl;
+	}
+
+	virtual void pourInCup()
+	{
+		cout << "Pour in cup " << endl;
+	}
+
+	virtual void putInSomething()
+	{
+		cout << "put in coffee bean" << endl;
 	}
 };
 
-class Dog :public Animal
+class makeTea :public abstractDrink
 {
-public:
-	void speak()
+	virtual void boil()
 	{
-		cout << "dog make a sound." << endl;
+		cout << "boil the water" << endl;
+	}
+
+	virtual void brew()
+	{
+		cout << "brew the leave of tea" << endl;
+	}
+
+	virtual void pourInCup()
+	{
+		cout << "Pour in cup " << endl;
+	}
+
+	virtual void putInSomething()
+	{
+		cout << "put in leave of bean" << endl;
 	}
 };
-
-void dospeak(Animal& species)
-{
-	species.speak();
-}
 
 int main()
 {
-	Cat cat;
-	Dog dog;
-	dospeak(cat);
-	dospeak(dog);
+	makeCoffee coffee;
+	coffee.makeDrink();
+
+	cout << endl;
+
+	makeTea tea;
+	tea.makeDrink();
 
 	return 0;
 }
