@@ -26,6 +26,10 @@ public class invokeBat {
                     if (!result.equals("not found"))
                     return result;
 
+                }else{
+                    if (i.getName().equals(fileName)) {
+                        return i.getAbsolutePath();
+                    }
                 }
 
             }
